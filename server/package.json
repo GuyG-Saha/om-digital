@@ -10,5 +10,8 @@
     "server"
   ],
   "author": "GuyG",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "mysql": "github:mysqljs/mysql"
+  }
 }
