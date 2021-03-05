@@ -4,7 +4,8 @@
   "description": "server side omabl",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "start": "node index.js",
+    "devStart": "nodemon index.js"
   },
   "keywords": [
     "server"
@@ -13,5 +14,8 @@
   "license": "ISC",
   "dependencies": {
     "mysql": "github:mysqljs/mysql"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }

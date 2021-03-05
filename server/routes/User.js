@@ -25,19 +25,32 @@ router.post('/login', (req, res) => {
         db.query('SELECT * FROM Users WHERE name = ?', [username], (err, results) => {
             if (err)
                 console.log(err)
-            if (results) {
+            if (results.length > 0) {
                 // Migrate to BCrypt -- for now dummy style
                 if (results[0].password == password) {
-                    res.send.json({'status': 200, 'message': 'You are logged in!'});
+                    res.json({
+                        status: 200, 
+                        message: 'You are logged in!', 
+                        loggedIn: true, 
+                        username: username
+                    });
                 } else {
-                    res.send.json({'status': 401, 'message': 'Wrong username or password'});
+                    res.json({
+                        status: 401, 
+                        message: 'Wrong username or password', 
+                        loggedIn: false
+                    });
                 }
             } else {
-                res.send.json({'status': 404, 'message': 'User does not exist!'})
+                res.json({
+                    status: 404, 
+                    message: 'User does not exist!', 
+                    loggedIn: false
+                })
             }
         })
     } catch (Exception) {
-        console.log(Exception)
+        res.json({status: 404, message: 'User does not exist!', loggedIn: false})
     }
 })
 
